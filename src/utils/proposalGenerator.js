@@ -154,8 +154,8 @@ export async function generateProposalDocx({
       : "$0.00",
     BOM: projectInfo.billOfMaterialsRef || "",
     SOW: formattedSOW,
-    "Project Background": aiContent.projectBackground || "",
-    "Project Notes": aiContent.projectNotes || "",
+    "Project Background": aiContent || projectInfo.projectBackground || "",
+    "Project Notes": projectInfo.projectNotes || "",
   };
 
   try {
