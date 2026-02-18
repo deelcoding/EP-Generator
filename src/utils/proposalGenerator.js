@@ -114,11 +114,11 @@ export async function generateProposalDocx({
   const ceEmail = ceContact?.email || "";
   const cePhone = ceContact?.phone || "";
 
-  // Parse opportunity name to extract number and title
-  const oppParts = (projectInfo.opportunityName || "").split(" – ");
+  // Split on either hyphen or en dash using regex
+  const oppParts = (projectInfo.opportunityName || "").split(/ [-–] /);
   const proposalNum = oppParts[0] || projectInfo.opportunityName || "";
   const proposalTitle =
-    oppParts.length > 1 ? oppParts.slice(1).join(" – ") : "";
+    oppParts.length > 1 ? oppParts.slice(1).join(" - ") : "";
 
   // Format Client Responsibilities as bullet points
   const formattedResponsibilities = (customResponsibilities || [])
@@ -128,6 +128,12 @@ export async function generateProposalDocx({
   // Format Project Specific Assumptions as bullet points
   const formattedAssumptions = (customAssumptions || [])
     .map((item) => `• ${item}`)
+    .join("\n");
+
+  // Format SOW items as a bulleted list
+  const formattedSOW = sowItems
+    .filter((item) => item.task && item.hours > 0)
+    .map((item) => `• ${item.task} (${item.hours}h - ${item.workRole})`)
     .join("\n");
 
   // Set the template data - keys must match placeholder names exactly
@@ -146,7 +152,8 @@ export async function generateProposalDocx({
     "Total Cost": calculations.grandTotal
       ? `${calculations.grandTotal.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
       : "$0.00",
-    "BOM": projectInfo.billOfMaterials || '',
+    BOM: projectInfo.billOfMaterialsRef || "",
+    SOW: formattedSOW,
   };
 
   doc.setData(data);
