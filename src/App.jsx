@@ -769,56 +769,79 @@ function ScopeOfWorkTab({
   return (
     <div style={styles.flexColumn}>
       {/* SOW Tasks */}
-      <Card title="Scope of Work Tasks">
+      <Card title={`Scope of Work Tasks (${calculations.totalSowHours} hrs)`}>
         <div style={styles.sowItemHeader}>
           <div style={styles.dimText}>Task Description</div>
           <div style={styles.dimText}>Work Role</div>
           <div style={styles.dimText}>Work Type</div>
           <div style={styles.dimText}>Hours</div>
+          <div style={styles.dimText}>Rate</div>
+          <div style={styles.dimText}>Total</div>
           <div></div>
         </div>
-
-        {sowItems.map((item, index) => (
-          <div
-            key={item.id}
-            style={styles.sowItemRow}>
-            <Input
-              value={item.task}
-              onChange={(v) => updateSowItem(item.id, "task", v)}
-              placeholder={`Task ${index + 1}`}
-            />
-            <Select
-              value={item.workRole}
-              onChange={(v) => updateSowItem(item.id, "workRole", v)}
-              options={WORK_ROLES.map((r) => r.role)}
-            />
-            <Select
-              value={item.workType}
-              onChange={(v) => updateSowItem(item.id, "workType", v)}
-              options={WORK_TYPES}
-            />
-            <Input
-              type="number"
-              value={item.hours}
-              onChange={(v) => updateSowItem(item.id, "hours", v)}
-              min="0"
-              step="0.25"
-            />
-            <button
-              onClick={() => removeSowItem(item.id)}
-              style={styles.deleteButton}
-              title="Remove task">
-              ✕
-            </button>
-          </div>
-        ))}
-
+        {sowItems.map((item, index) => {
+          const discount = (parseFloat(projectInfo.discountRate) || 0) / 100;
+          const rate = getRateForType(item.workRole, item.workType, discount);
+          const hrs = parseFloat(item.hours) || 0;
+          return (
+            <div
+              key={item.id}
+              style={styles.sowItemRow}>
+              <Input
+                value={item.task}
+                onChange={(v) => updateSowItem(item.id, "task", v)}
+                placeholder={`Task ${index + 1}`}
+              />
+              <Select
+                value={item.workRole}
+                onChange={(v) => updateSowItem(item.id, "workRole", v)}
+                options={WORK_ROLES.map((r) => r.role)}
+              />
+              <Select
+                value={item.workType}
+                onChange={(v) => updateSowItem(item.id, "workType", v)}
+                options={WORK_TYPES}
+              />
+              <Input
+                type="number"
+                value={item.hours}
+                onChange={(v) => updateSowItem(item.id, "hours", v)}
+                min="0"
+                step="0.25"
+              />
+              <div
+                style={{
+                  color: colors.textMuted,
+                  fontVariantNumeric: "tabular-nums",
+                  fontSize: 13,
+                  padding: "9px 0",
+                }}>
+                {fmt(rate)}
+              </div>
+              <div
+                style={{
+                  color: colors.text,
+                  fontWeight: 500,
+                  fontVariantNumeric: "tabular-nums",
+                  fontSize: 13,
+                  padding: "9px 0",
+                }}>
+                {fmt(hrs * rate)}
+              </div>
+              <button
+                onClick={() => removeSowItem(item.id)}
+                style={styles.deleteButton}
+                title="Remove task">
+                ✕
+              </button>
+            </div>
+          );
+        })}
         <button
           onClick={addSowItem}
           style={styles.addButton}>
           + Add Task
         </button>
-
         <div style={{ ...styles.mutedText, marginTop: 12 }}>
           Total SOW Hours: {calculations.totalSowHours.toFixed(2)} &bull; Cost:{" "}
           {fmt(calculations.sowCost)} &bull; Sell: {fmt(calculations.sowSell)}

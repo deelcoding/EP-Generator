@@ -7,7 +7,8 @@ export const styles = {
     minHeight: "100vh",
     background: colors.bg,
     color: colors.text,
-    fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
+    fontFamily:
+      '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
   },
 
   // ─── Header ───
@@ -100,7 +101,9 @@ export const styles = {
     color: isActive ? colors.matrixBlue : colors.textMuted,
     background: isActive ? colors.sky : "none",
     border: "none",
-    borderBottom: isActive ? `3px solid ${colors.matrixBlue}` : "3px solid transparent",
+    borderBottom: isActive
+      ? `3px solid ${colors.matrixBlue}`
+      : "3px solid transparent",
     cursor: "pointer",
     transition: "all 0.15s",
     letterSpacing: "0.01em",
@@ -144,22 +147,22 @@ export const styles = {
     gridColumn: "1 / -1",
   },
 
-  // ─── SOW Grid ───
-  sowItemRow: {
-    display: "grid",
-    gridTemplateColumns: "1fr 140px 140px 80px 32px",
-    gap: 8,
-    alignItems: "end",
-    marginBottom: 8,
-  },
-
+  // ─── SOW Grid (updated for Rate and Total columns) ───
   sowItemHeader: {
     display: "grid",
-    gridTemplateColumns: "1fr 140px 140px 80px 32px",
+    gridTemplateColumns: "1fr 140px 140px 80px 80px 100px 32px",
     gap: 8,
     marginBottom: 8,
     paddingBottom: 8,
     borderBottom: `1px solid ${colors.border}`,
+  },
+
+  sowItemRow: {
+    display: "grid",
+    gridTemplateColumns: "1fr 140px 140px 80px 80px 100px 32px",
+    gap: 8,
+    alignItems: "center",
+    marginBottom: 8,
   },
 
   // ─── Hours Grid ───
@@ -225,7 +228,9 @@ export const styles = {
   },
 
   generateButton: (disabled) => ({
-    background: disabled ? colors.bone : `linear-gradient(135deg, ${colors.matrixBlue}, ${colors.accentHover})`,
+    background: disabled
+      ? colors.bone
+      : `linear-gradient(135deg, ${colors.matrixBlue}, ${colors.accentHover})`,
     color: disabled ? colors.textDim : colors.white,
     border: "none",
     borderRadius: 8,

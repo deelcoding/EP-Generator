@@ -146,6 +146,7 @@ export async function generateProposalDocx({
     "Total Cost": calculations.grandTotal
       ? `${calculations.grandTotal.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
       : "$0.00",
+    "BOM": projectInfo.billOfMaterials || '',
   };
 
   doc.setData(data);
