@@ -154,12 +154,12 @@ export async function generateProposalDocx({
       : "$0.00",
     BOM: projectInfo.billOfMaterialsRef || "",
     SOW: formattedSOW,
+    "Project Background": aiContent.projectBackground || "",
+    "Project Notes": aiContent.projectNotes || "",
   };
 
-  doc.setData(data);
-
   try {
-    doc.render();
+    doc.render(data);
   } catch (error) {
     console.error("Template rendering error:", error);
     // Log more details about the error
