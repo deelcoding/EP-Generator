@@ -133,7 +133,7 @@ export async function generateProposalDocx({
   // Format SOW items as a bulleted list
   const formattedSOW = sowItems
     .filter((item) => item.task && item.hours > 0)
-    .map((item) => `• ${item.task} (${item.hours}h - ${item.workRole})`)
+    .map((item) => `• ${item.task}`)
     .join("\n");
 
   // Set the template data - keys must match placeholder names exactly
