@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  assetsInclude: ['**/*.docx'],
+  base: '/EP-Generator/',  // Replace with your actual repo name
 })
