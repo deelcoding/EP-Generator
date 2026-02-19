@@ -57,68 +57,42 @@ export const WORK_TYPES = ["Proj. Normal", "Proj. Overtime", "Design Eng (ER)"];
 export const CONTACTS = [
   {
     name: "Aaron Williams",
-    phone: "(812) 481-5039",
-    email: "aawilliams@matrixintegration.com",
   },
   {
     name: "Collier Phelps",
-    phone: "(502) 242-5308",
-    email: "cphelps@matrixintegration.com",
   },
   {
     name: "David Crawford",
-    phone: "(502) 498-0239",
-    email: "dcrawford@matrixintegration.com",
   },
   {
     name: "Duncan McKinney",
-    phone: "(502) 599-7748",
-    email: "dmckinney@matrixintegration.com",
   },
   {
     name: "Jared Ferguson",
-    phone: "(812) 481-5017",
-    email: "jferguson@matrixintegration.com",
   },
   {
     name: "Kristen Tayler",
-    phone: "(502) 708-8525",
-    email: "ktaylor@matrixintegration.com",
   },
   {
     name: "Cody Beadles",
-    phone: "(812) 630-0415",
-    email: "cbeadles@matrixintegration.com",
   },
   {
     name: "Maggie McGovern",
-    phone: "(812) 481-5155",
-    email: "mmcgovern@matrixintegration.com",
   },
   {
     name: "Mariah Obermeier",
-    phone: "(812) 481-5111",
-    email: "mobermeier@matrixintegration.com",
   },
   {
     name: "Mark Anselment",
-    phone: "(812) 481-5340",
-    email: "manselment@matrixintegration.com",
   },
   {
     name: "Matt Buechler",
-    phone: "(812) 481-5051",
-    email: "mbuechler@matrixintegration.com",
   },
   {
     name: "Pete Mikiten",
-    phone: "(812) 481-5171",
-    email: "pmikiten@matrixintegration.com",
   },
   {
     name: "Rob Wildman",
-    phone: "(812) 481-5038",
-    email: "rwildman@matrixintegration.com",
   },
 ];
 
@@ -183,30 +157,30 @@ export const colors = {
   card: "#FFFFFF",
   cardAlt: "#EFF5FA",
   border: "#D7D8C6",
-  
+
   accent: "#2570B9",
   accentHover: "#1e5a94",
   accentGlow: "rgba(37, 112, 185, 0.15)",
-  
+
   // Updated green for better visibility on dark backgrounds
-  green: "#22c55e",  // Brighter green for the header stats
+  green: "#22c55e", // Brighter green for the header stats
   greenGlow: "rgba(34, 197, 94, 0.15)",
-  
+
   red: "#c44536",
   orange: "#d4a054",
-  
+
   text: "#373737",
   textMuted: "#506457",
   textDim: "#7a8a7e",
   white: "#FFFFFF",
-  
+
   inputBg: "#FFFFFF",
   inputBorder: "#D7D8C6",
   inputFocus: "#2570B9",
 
   success: "#B5D4B9",
   successGlow: "rgba(181, 212, 185, 0.3)",
-  
+
   // Keep cambridge for other success states in light areas
   cambridgeGreen: "#B5D4B9",
 };

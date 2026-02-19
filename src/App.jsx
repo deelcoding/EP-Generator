@@ -775,7 +775,7 @@ function ScopeOfWorkTab({
           <div style={styles.dimText}>Work Role</div>
           <div style={styles.dimText}>Work Type</div>
           <div style={styles.dimText}>Hours</div>
-          <div style={styles.dimText}>Rate</div>
+          {/* <div style={styles.dimText}>Rate</div> */}
           <div style={styles.dimText}>Total</div>
           <div></div>
         </div>
@@ -809,7 +809,7 @@ function ScopeOfWorkTab({
                 min="0"
                 step="0.25"
               />
-              <div
+              {/* <div
                 style={{
                   color: colors.textMuted,
                   fontVariantNumeric: "tabular-nums",
@@ -817,7 +817,7 @@ function ScopeOfWorkTab({
                   padding: "9px 0",
                 }}>
                 {fmt(rate)}
-              </div>
+              </div> */}
               <div
                 style={{
                   color: colors.text,
